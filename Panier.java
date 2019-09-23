@@ -53,11 +53,23 @@ public class Panier {
 		}
 	}
 
+	public void retire() {
+		this.listeOranges.remove(this.listeOranges.size()-1);
+	}
+
+	public double getPrix() {
+		double prix = 0;
+		for (int i = 0; i<this.listeOranges.size(); i++) {
+			prix += this.listeOranges.get(i).getPrix();
+		}
+		return prix;
+	}
+
 	public static void main(String [] args) {
 		Orange orange1 = new Orange(2, "a");
-		Orange orange2 = new Orange(2, "b");
-		Orange orange3 = new Orange(2, "c");
-		Orange orange4 = new Orange(2, "d");
+		Orange orange2 = new Orange(5, "b");
+		Orange orange3 = new Orange(4, "c");
+		Orange orange4 = new Orange(1, "d");
 
 		Panier panier = new Panier(3);
 
@@ -75,6 +87,13 @@ public class Panier {
 		panier.ajoute(orange4);
 
 		System.out.println("Le panier contient "+panier.nbOranges()+" oranges!");
+
+		System.out.println("Prix du panier : "+panier.getPrix());
+
+		panier.retire();
+
+		System.out.println("Prix du panier : "+panier.getPrix());
+
 
 	}
 
